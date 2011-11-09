@@ -1,6 +1,6 @@
 # Copyright 2011, Red Hat
 
-%define oname configshell
+%global oname configshell
 
 Name:           python-configshell
 License:        AGPLv3
