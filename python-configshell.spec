@@ -8,7 +8,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fedora
 Source:         https://github.com/agrover/%{oname}/tarball/%{version}
 Patch1:         %{name}-git-version.patch
@@ -44,6 +44,11 @@ rm -rf %{buildroot}
 %doc COPYING README
 
 %changelog
+* Mon Nov 21 2011 Andy Grover <agrover@redhat.com> - 1:1.1-2
+- Properly update changelog
+- Sync version with upstream, Epoch used
+- Change Source URL to intermediate github repo
+
 * Fri Sep 23 2011 Andy Grover <agrover@redhat.com> - 1.99.1.git987b63b-5
 * Rebuild
 
