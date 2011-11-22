@@ -1,20 +1,16 @@
 # Copyright 2011, Red Hat
 
-%global oname configshell
+%global oname configshell-fedora
 
 Name:           python-configshell
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
-Version:        1.99.1.git987b63b
-Release:        5%{?dist}
-# placeholder URL and source entries
-# archive created using:
-# git clone git://risingtidesystems.com/configshell.git
-# cd configshell
-# git archive 987b63b --prefix configshell-%{version}/ | gzip > configshell-%{version}.tar.gz
-URL:            http://www.risingtidesystems.com/git/
-Source:         %{oname}-%{version}.tar.gz
+Epoch:          1
+Version:        1.1
+Release:        1%{?dist}
+URL:            https://github.com/agrover/configshell-fedora
+Source:         https://github.com/agrover/%{oname}/tarball/%{version}
 Patch1:         %{name}-git-version.patch
 Patch2:         %{name}-remove-epydoc-dep.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -27,7 +23,7 @@ A framework to implement simple but nice configuration-oriented
 command-line interfaces.
 
 %prep
-%setup -q -n %{oname}-%{version}
+%setup -q -n agrover-%{oname}-3ba5560
 %patch1 -p1
 %patch2 -p1
 
