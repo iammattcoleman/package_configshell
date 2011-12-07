@@ -1,18 +1,16 @@
 # Copyright 2011, Red Hat
 
-%global oname configshell-fedora
+%global oname configshell-fb
 
 Name:           python-configshell
 License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1
-Release:        2%{?dist}
-URL:            https://github.com/agrover/configshell-fedora
-Source:         https://github.com/agrover/%{oname}/tarball/%{version}
-Patch1:         %{name}-git-version.patch
-Patch2:         %{name}-remove-epydoc-dep.patch
+Version:        1.1.fb1
+Release:        1%{?dist}
+URL:            https://github.com/agrover/configshell-fb
+Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch:      noarch
 BuildRequires:  python-devel epydoc python-simpleparse python-urwid
@@ -23,9 +21,7 @@ A framework to implement simple but nice configuration-oriented
 command-line interfaces.
 
 %prep
-%setup -q -n agrover-%{oname}-3ba5560
-%patch1 -p1
-%patch2 -p1
+%setup -q -n agrover-%{oname}-b76d10b
 
 %build
 %{__python} setup.py build
@@ -44,6 +40,12 @@ rm -rf %{buildroot}
 %doc COPYING README
 
 %changelog
+* Tue Dec 6 2011 Andy Grover <agrover@redhat.com> - 1:1.1.fb1-1
+- New upstream source and release
+- Remove patches:
+  * python-configshell-remove-epydoc-dep.patch
+  * python-configshell-git-version.patch
+
 * Mon Nov 21 2011 Andy Grover <agrover@redhat.com> - 1:1.1-2
 - Properly update changelog
 - Sync version with upstream, Epoch used
