@@ -7,7 +7,7 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb3
+Version:        1.1.fb4
 Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
@@ -21,7 +21,7 @@ A framework to implement simple but nice configuration-oriented
 command-line interfaces.
 
 %prep
-%setup -q -n agrover-%{oname}-2e43014
+%setup -q -n agrover-%{oname}-0deef22
 
 %build
 %{__python} setup.py build
@@ -40,6 +40,9 @@ rm -rf %{buildroot}
 %doc COPYING README
 
 %changelog
+* Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb4-1
+- New upstream release
+
 * Tue Dec 14 2011 Andy Grover <agrover@redhat.com> - 1:1.1.fb3-1
 - New upstream release
 
