@@ -8,7 +8,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb4
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
@@ -40,6 +40,9 @@ rm -rf %{buildroot}
 %doc COPYING README
 
 %changelog
+* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
+
 * Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb4-1
 - New upstream release
 
