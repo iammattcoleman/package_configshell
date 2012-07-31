@@ -7,11 +7,10 @@ License:        AGPLv3
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb4
+Version:        1.1.fb5
 Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
-Source:         https://github.com/agrover/%{oname}/tarball/v%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Source:         https://github.com/downloads/agrover/%{oname}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-devel epydoc python-simpleparse python-urwid
 Requires: python-simpleparse python-urwid
@@ -21,7 +20,7 @@ A framework to implement simple but nice configuration-oriented
 command-line interfaces.
 
 %prep
-%setup -q -n agrover-%{oname}-0deef22
+%setup -q -n %{oname}-%{version}
 
 %build
 %{__python} setup.py build
@@ -30,16 +29,15 @@ command-line interfaces.
 rm -rf %{buildroot}
 %{__python} setup.py install --skip-build --root %{buildroot}
 
-
-%clean
-rm -rf %{buildroot}
-
 %files
-%defattr(-,root,root,-)
-%{python_sitelib}
+%{python_sitelib}/*
 %doc COPYING README
 
 %changelog
+* Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb5-1
+- New upstream release
+- Update Source URL to proper tarball
+
 * Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb4-1
 - New upstream release
 
