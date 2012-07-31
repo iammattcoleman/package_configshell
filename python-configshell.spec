@@ -34,9 +34,12 @@ rm -rf %{buildroot}
 %doc COPYING README
 
 %changelog
-* Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb5-1
+* Tue Jul 31 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb5-1
 - New upstream release
 - Update Source URL to proper tarball
+
+* Sat Jul 21 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_18_Mass_Rebuild
 
 * Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb4-1
 - New upstream release
