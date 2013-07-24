@@ -3,11 +3,11 @@
 %global oname configshell-fb
 
 Name:           python-configshell
-License:        AGPLv3
+License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb7
+Version:        1.1.fb8
 Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 # Acquire with
@@ -34,9 +34,14 @@ rm -rf %{buildroot}
 
 %files
 %{python_sitelib}/*
-%doc COPYING README
+%doc COPYING README.md
 
 %changelog
+* Tue Jul 23 2013 Andy Grover <agrover@redhat.com> - 1:1.1.fb8-1
+- New upstream release
+- License now Apache 2.0
+- README.md instead of README
+
 * Tue Feb 26 2013 Andy Grover <agrover@redhat.com> - 1:1.1.fb7-1
 - New upstream release
 
