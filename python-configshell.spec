@@ -8,7 +8,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb8
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 # Acquire with
 # wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
@@ -37,6 +37,9 @@ rm -rf %{buildroot}
 %doc COPYING README.md
 
 %changelog
+* Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb8-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
+
 * Tue Jul 23 2013 Andy Grover <agrover@redhat.com> - 1:1.1.fb8-1
 - New upstream release
 - License now Apache 2.0
