@@ -7,16 +7,16 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb8
-Release:        2%{?dist}
+Version:        1.1.fb9
+Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 # Acquire with
 # wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
 # and it will save with the name below. Not cool, github.
 Source:         https://github.com/agrover/%{oname}/archive/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-devel epydoc python-simpleparse python-urwid
-Requires: python-simpleparse python-urwid
+BuildRequires:  python-devel
+Requires: pyparsing python-urwid
 
 %description
 A framework to implement simple but nice configuration-oriented
@@ -37,6 +37,11 @@ rm -rf %{buildroot}
 %doc COPYING README.md
 
 %changelog
+* Thu Sep 12 2013 Andy Grover <agrover@redhat.com> - 1:1.1.fb9-1
+- New upstream release
+- Remove dependency on python-simpleparse in favor of pyparsing
+- Remove BuildRequires
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb8-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
