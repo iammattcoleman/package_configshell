@@ -7,15 +7,12 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb9
+Version:        1.1.fb10
 Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
-# Acquire with
-# wget --content-disposition https://github.com/agrover/%{oname}/archive/v%{version}.tar.gz
-# and it will save with the name below. Not cool, github.
-Source:         https://github.com/agrover/%{oname}/archive/%{oname}-%{version}.tar.gz
+Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-devel
+BuildRequires:  python-devel python-setuptools
 Requires: pyparsing python-urwid
 
 %description
@@ -37,6 +34,9 @@ rm -rf %{buildroot}
 %doc COPYING README.md
 
 %changelog
+* Fri Nov 1 2013 Andy Grover <agrover@redhat.com> - 1:1.1.fb10-1
+- New upstream release
+
 * Thu Sep 12 2013 Andy Grover <agrover@redhat.com> - 1:1.1.fb9-1
 - New upstream release
 - Remove dependency on python-simpleparse in favor of pyparsing
@@ -70,7 +70,7 @@ rm -rf %{buildroot}
 * Tue Jan 10 2012 Andy Grover <agrover@redhat.com> - 1:1.1.fb4-1
 - New upstream release
 
-* Tue Dec 14 2011 Andy Grover <agrover@redhat.com> - 1:1.1.fb3-1
+* Wed Dec 14 2011 Andy Grover <agrover@redhat.com> - 1:1.1.fb3-1
 - New upstream release
 
 * Tue Dec 13 2011 Andy Grover <agrover@redhat.com> - 1:1.1.fb2-1
