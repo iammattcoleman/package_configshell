@@ -1,5 +1,9 @@
 # Copyright 2011, Red Hat
 
+%if 0%{?fedora}
+%global with_python3 1
+%endif
+
 %global oname configshell-fb
 
 Name:           python-configshell
@@ -8,32 +12,76 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb14
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-devel python-setuptools
 Requires: pyparsing python-urwid
 
+%if 0%{?with_python3}
+BuildRequires:  python3-devel python-tools python3-setuptools
+%endif
+
 %description
 A framework to implement simple but nice configuration-oriented
 command-line interfaces.
 
+%if 0%{?with_python3}
+%package -n python3-configshell
+Summary:        A framework to implement simple but nice CLIs
+Group:          System Environment/Libraries
+
+%description -n python3-configshell
+A framework to implement simple but nice configuration-oriented
+command-line interfaces.
+%endif
+
 %prep
 %setup -q -n %{oname}-%{version}
 
+%if 0%{?with_python3}
+rm -rf %{py3dir}
+cp -a . %{py3dir}
+%endif
+
 %build
 %{__python} setup.py build
+
+%if 0%{?with_python3}
+pushd %{py3dir}
+2to3 --write --nobackups .
+%{__python3} setup.py build
+popd
+%endif
 
 %install
 rm -rf %{buildroot}
 %{__python} setup.py install --skip-build --root %{buildroot}
 
+%if 0%{?with_python3}
+pushd %{py3dir}
+# We don't want py3-converted scripts overwriting py2 scripts
+# Shunt them elsewhere then delete
+%{__python3} setup.py install --skip-build --root %{buildroot} --install-scripts py3scripts
+rm -rf %{buildroot}/py3scripts
+popd
+%endif
+
 %files
 %{python_sitelib}/*
 %doc COPYING README.md
 
+%if 0%{?with_python3}
+%files -n python3-configshell
+%{python3_sitelib}/*
+%doc COPYING README.md
+%endif
+
 %changelog
+* Thu Nov 13 2014 Andy Grover <agrover@redhat.com> - 1:1.1.fb14-2
+- Add Python 3 subpackage
+
 * Thu Aug 28 2014 Andy Grover <agrover@redhat.com> - 1:1.1.fb14-1
 - New upstream release
 
