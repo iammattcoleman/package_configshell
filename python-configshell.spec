@@ -12,7 +12,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb14
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -31,6 +31,7 @@ command-line interfaces.
 %package -n python3-configshell
 Summary:        A framework to implement simple but nice CLIs
 Group:          System Environment/Libraries
+Requires:       python3-pyparsing python3-urwid
 
 %description -n python3-configshell
 A framework to implement simple but nice configuration-oriented
@@ -79,6 +80,9 @@ popd
 %endif
 
 %changelog
+* Fri Nov 14 2014 Andy Grover <agrover@redhat.com> - 1:1.1.fb14-3
+- Add python 3 dependencies to Python 3 package
+
 * Thu Nov 13 2014 Andy Grover <agrover@redhat.com> - 1:1.1.fb14-2
 - Add Python 3 subpackage
 
