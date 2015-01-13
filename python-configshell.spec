@@ -11,7 +11,7 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb16
+Version:        1.1.fb17
 Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
@@ -80,6 +80,9 @@ popd
 %endif
 
 %changelog
+* Tue Jan 13 2015 Andy Grover <agrover@redhat.com> - 1:1.1.fb17-1
+- New upstream release
+
 * Tue Dec 2 2014 Andy Grover <agrover@redhat.com> - 1:1.1.fb16-1
 - New upstream release
 
