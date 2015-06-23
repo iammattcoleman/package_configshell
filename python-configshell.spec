@@ -11,16 +11,16 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb17
-Release:        2%{?dist}
+Version:        1.1.fb18
+Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  python-devel python-setuptools
-Requires: pyparsing python-urwid
+Requires: pyparsing python-urwid python-six
 
 %if 0%{?with_python3}
-BuildRequires:  python3-devel python-tools python3-setuptools
+BuildRequires:  python3-devel python3-setuptools
 %endif
 
 %description
@@ -51,7 +51,6 @@ cp -a . %{py3dir}
 
 %if 0%{?with_python3}
 pushd %{py3dir}
-2to3 --write --nobackups .
 %{__python3} setup.py build
 popd
 %endif
@@ -62,10 +61,7 @@ rm -rf %{buildroot}
 
 %if 0%{?with_python3}
 pushd %{py3dir}
-# We don't want py3-converted scripts overwriting py2 scripts
-# Shunt them elsewhere then delete
-%{__python3} setup.py install --skip-build --root %{buildroot} --install-scripts py3scripts
-rm -rf %{buildroot}/py3scripts
+%{__python3} setup.py install --skip-build --root %{buildroot}
 popd
 %endif
 
@@ -80,6 +76,10 @@ popd
 %endif
 
 %changelog
+* Tue Jun 23 2015 Andy Grover <agrover@redhat.com> - 1:1.1.fb18-1
+- New upstream release
+- Add dependency on python-six instead of 2to3
+
 * Thu Jun 18 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb17-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
