@@ -12,7 +12,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb18
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -76,6 +76,9 @@ popd
 %endif
 
 %changelog
+* Tue Nov 10 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb18-3
+- Rebuilt for https://fedoraproject.org/wiki/Changes/python3.5
+
 * Tue Oct 27 2015 Andy Grover <agrover@redhat.com> - 1:1.1.fb18-2
 - Rebuild
 
