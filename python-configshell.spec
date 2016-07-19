@@ -12,7 +12,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb20
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -76,6 +76,9 @@ popd
 %endif
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1:1.1.fb20-2
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Thu Apr 7 2016 Andy Grover <agrover@redhat.com> - 1:1.1.fb20-1
 - New upstream release
 
