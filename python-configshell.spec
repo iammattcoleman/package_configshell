@@ -12,9 +12,10 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb23
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
+Patch0:         configshell-fix-term.patch
 BuildArch:      noarch
 BuildRequires:  python-devel python-setuptools
 Requires: pyparsing python-urwid python-six
@@ -40,6 +41,7 @@ command-line interfaces.
 
 %prep
 %setup -q -n %{oname}-%{version}
+%patch0 -p1
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -76,6 +78,9 @@ popd
 %endif
 
 %changelog
+* Tue May 23 2017 Andy Grover <agrover@redhat.com> - 1:1.1.fb23-2
+- Add patch configshell-fix-term.patch
+
 * Wed Mar 1 2017 Andy Grover <agrover@redhat.com> - 1:1.1.fb23-1
 - New upstream release
 

@@ -1,0 +1,31 @@
+commit daa66bc6acd2430cdd05e9883dd1eab69b698252
+Author: Andy Grover <agrover@redhat.com>
+Date:   Tue May 23 12:00:10 2017 -0700
+
+    Handle if TERM is not set
+    
+    Previous patch causes problems otherwise in some cases.
+    
+    Signed-off-by: Andy Grover <agrover@redhat.com>
+
+diff --git a/configshell/shell.py b/configshell/shell.py
+index c916366..e029c76 100644
+--- a/configshell/shell.py
++++ b/configshell/shell.py
+@@ -50,13 +50,14 @@ else:
+     tty=False
+     
+     # remember the original setting
+-    oldTerm = os.environ['TERM']
++    oldTerm = os.environ.get('TERM')
+     os.environ['TERM'] = ''
+ 
+     import readline
+ 
+     # restore the orignal TERM setting
+-    os.environ['TERM'] = oldTerm
++    if oldTerm != None:
++        os.environ['TERM'] = oldTerm
+     del oldTerm
+     
+ # Pyparsing helper to group the location of a token and its value
