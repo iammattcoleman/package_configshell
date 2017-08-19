@@ -12,21 +12,29 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb23
-Release:        3%{?dist}
+Release:        4%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 Patch0:         configshell-fix-term.patch
 BuildArch:      noarch
 BuildRequires:  python-devel python-setuptools
-Requires: pyparsing python-urwid python-six
 
 %if 0%{?with_python3}
 BuildRequires:  python3-devel python3-setuptools
 %endif
 
-%description
-A framework to implement simple but nice configuration-oriented
+%global _description\
+A framework to implement simple but nice configuration-oriented\
 command-line interfaces.
+
+%description %_description
+
+%package -n python2-configshell
+Summary: %summary
+Requires: pyparsing python-urwid python-six
+%{?python_provide:%python_provide python2-configshell}
+
+%description -n python2-configshell %_description
 
 %if 0%{?with_python3}
 %package -n python3-configshell
@@ -67,7 +75,7 @@ pushd %{py3dir}
 popd
 %endif
 
-%files
+%files -n python2-configshell
 %{python_sitelib}/*
 %doc COPYING README.md
 
@@ -78,6 +86,10 @@ popd
 %endif
 
 %changelog
+* Sat Aug 19 2017 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1:1.1.fb23-4
+- Python 2 binary package renamed to python2-configshell
+  See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3
+
 * Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.fb23-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
