@@ -1,6 +1,6 @@
 # Copyright 2011, Red Hat
 
-%if 0%{?fedora}
+%if 0%{?fedora} || 0%{?rhel} > 7
 %global with_python3 1
 %endif
 
@@ -12,7 +12,7 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb23
-Release:        4%{?dist}
+Release:        5%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 Patch0:         configshell-fix-term.patch
@@ -86,6 +86,9 @@ popd
 %endif
 
 %changelog
+* Fri Dec 01 2017 Troy Dawson <tdawson@redhat.com> - 1:1.1.fb23-5
+- Update spec file conditionals
+
 * Sat Aug 19 2017 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 1:1.1.fb23-4
 - Python 2 binary package renamed to python2-configshell
   See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3
