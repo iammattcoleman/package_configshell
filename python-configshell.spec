@@ -11,11 +11,10 @@ License:        ASL 2.0
 Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
-Version:        1.1.fb23
-Release:        5%{?dist}
+Version:        1.1.fb24
+Release:        1%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
-Patch0:         configshell-fix-term.patch
 BuildArch:      noarch
 BuildRequires:  python-devel python-setuptools
 
@@ -49,7 +48,6 @@ command-line interfaces.
 
 %prep
 %setup -q -n %{oname}-%{version}
-%patch0 -p1
 
 %if 0%{?with_python3}
 rm -rf %{py3dir}
@@ -86,6 +84,10 @@ popd
 %endif
 
 %changelog
+* Fri Jan 26 2018 Andy Grover <agrover@redhat.com> - 1:1.1.fb24-1
+- New upstream release
+- Remove patch configshell-fix-term.patch
+
 * Fri Dec 01 2017 Troy Dawson <tdawson@redhat.com> - 1:1.1.fb23-5
 - Update spec file conditionals
 
