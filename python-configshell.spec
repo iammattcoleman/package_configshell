@@ -12,11 +12,11 @@ Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb24
-Release:        1%{?dist}
+Release:        2%{?dist}
 URL:            https://github.com/agrover/configshell-fb
 Source:         https://fedorahosted.org/released/targetcli-fb/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python-devel python-setuptools
+BuildRequires:  python2-devel python2-setuptools
 
 %if 0%{?with_python3}
 BuildRequires:  python3-devel python3-setuptools
@@ -30,7 +30,7 @@ command-line interfaces.
 
 %package -n python2-configshell
 Summary: %summary
-Requires: pyparsing python-urwid python-six
+Requires: python2-pyparsing python2-urwid python2-six
 %{?python_provide:%python_provide python2-configshell}
 
 %description -n python2-configshell %_description
@@ -84,6 +84,10 @@ popd
 %endif
 
 %changelog
+* Mon Jan 29 2018 Iryna Shcherbina <ishcherb@redhat.com> - 1:1.1.fb24-2
+- Update Python 2 dependency declarations to new packaging standards
+  (See https://fedoraproject.org/wiki/FinalizingFedoraSwitchtoPython3)
+
 * Fri Jan 26 2018 Andy Grover <agrover@redhat.com> - 1:1.1.fb24-1
 - New upstream release
 - Remove patch configshell-fix-term.patch
