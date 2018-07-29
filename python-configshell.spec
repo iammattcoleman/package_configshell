@@ -55,7 +55,7 @@ cp -a . %{py3dir}
 %endif
 
 %build
-%{__python} setup.py build
+%py2_build
 
 %if 0%{?with_python3}
 pushd %{py3dir}
