@@ -74,7 +74,7 @@ popd
 %endif
 
 %files -n python2-configshell
-%{python_sitelib}/*
+%{python2_sitelib}/*
 %doc COPYING README.md
 
 %if 0%{?with_python3}
