@@ -1,26 +1,17 @@
 # Copyright 2011, Red Hat
-
-%if 0%{?fedora} || 0%{?rhel} > 7
-%global with_python3 1
-%endif
-
 %global oname configshell-fb
 
 Name:           python-configshell
 License:        ASL 2.0
-Group:          System Environment/Libraries
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb25
-Release:        2%{?dist}
+Release:        3%{?dist}
 URL:            https://github.com/open-iscsi/configshell-fb
 Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  python2-devel python2-setuptools
 
-%if 0%{?with_python3}
 BuildRequires:  python3-devel python3-setuptools
-%endif
 
 %global _description\
 A framework to implement simple but nice configuration-oriented\
@@ -28,62 +19,31 @@ command-line interfaces.
 
 %description %_description
 
-%package -n python2-configshell
-Summary: %summary
-Requires: python2-pyparsing python2-urwid python2-six
-%{?python_provide:%python_provide python2-configshell}
-
-%description -n python2-configshell %_description
-
-%if 0%{?with_python3}
 %package -n python3-configshell
 Summary:        A framework to implement simple but nice CLIs
-Group:          System Environment/Libraries
 Requires:       python3-pyparsing python3-urwid
+%{?python_provide:%python_provide python3-configshell}
 
-%description -n python3-configshell
-A framework to implement simple but nice configuration-oriented
-command-line interfaces.
-%endif
+%description -n python3-configshell %_description
 
 %prep
 %setup -q -n %{oname}-%{version}
 
-%if 0%{?with_python3}
-rm -rf %{py3dir}
-cp -a . %{py3dir}
-%endif
-
 %build
-%py2_build
-
-%if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py build
-popd
-%endif
+%py3_build
 
 %install
-rm -rf %{buildroot}
-%py2_install
+%py3_install
 
-%if 0%{?with_python3}
-pushd %{py3dir}
-%{__python3} setup.py install --skip-build --root %{buildroot}
-popd
-%endif
-
-%files -n python2-configshell
-%{python2_sitelib}/*
-%doc COPYING README.md
-
-%if 0%{?with_python3}
 %files -n python3-configshell
-%{python3_sitelib}/*
+%{python3_sitelib}/configshell*
 %doc COPYING README.md
-%endif
 
 %changelog
+* Thu Oct 11 2018 Miro Hrončok <mhroncok@redhat.com> - 1:1.1.fb25-3
+- Python2 binary package has been removed
+  See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
+
 * Wed Oct 10 2018 Andy Grover <agrover@redhat.com> - 1:1.1.fb25-2
 - Fix URL to point to open-iscsi org
 
