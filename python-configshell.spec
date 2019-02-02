@@ -6,7 +6,7 @@ License:        ASL 2.0
 Summary:        A framework to implement simple but nice CLIs
 Epoch:          1
 Version:        1.1.fb25
-Release:        3%{?dist}
+Release:        4%{?dist}
 URL:            https://github.com/open-iscsi/configshell-fb
 Source:         %{url}/archive/v%{version}/%{oname}-%{version}.tar.gz
 BuildArch:      noarch
@@ -40,6 +40,9 @@ Requires:       python3-pyparsing python3-urwid
 %doc COPYING README.md
 
 %changelog
+* Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 1:1.1.fb25-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Thu Oct 11 2018 Miro Hrončok <mhroncok@redhat.com> - 1:1.1.fb25-3
 - Python2 binary package has been removed
   See https://fedoraproject.org/wiki/Changes/Mass_Python_2_Package_Removal
